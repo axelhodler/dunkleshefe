@@ -12,17 +12,11 @@ public class Server {
     while (true) {
       try (
         Socket clientSocket = serverSocket.accept();
-        BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
-        BufferedWriter out = new BufferedWriter(new OutputStreamWriter(clientSocket.getOutputStream()));
+        PrintWriter out = new PrintWriter(clientSocket.getOutputStream());
       ) {
-        String s;
-        while ((s = in.readLine()) != null) {
-          System.out.println(s);
-          if (s.isEmpty()) {
-            break;
-          }
-        }
-        out.write("HTTP/1.0 200 OK\r\n");
+        out.println("HTTP/1.1 200 OK\r\n");
+        out.println("<html><body><p>Hello World</p></body></html>");
+        out.flush();
       }
     }
   }
