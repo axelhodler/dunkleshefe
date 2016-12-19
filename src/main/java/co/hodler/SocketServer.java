@@ -1,13 +1,13 @@
 package co.hodler;
 
-import java.io.*;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-public class Server {
-
-  public static void main(String[] args) throws IOException {
-    ServerSocket serverSocket = new ServerSocket(8042);
+public class SocketServer {
+  public void start(int port) throws IOException {
+    ServerSocket serverSocket = new ServerSocket(port);
 
     while (true) {
       try (
