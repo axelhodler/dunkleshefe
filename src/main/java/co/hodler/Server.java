@@ -16,7 +16,6 @@ public class Server {
       ) {
         out.println("HTTP/1.1 200 OK\r\n");
         out.println("<html><body><p>Hello World</p></body></html>");
-        out.flush();
       }
     }
   }
