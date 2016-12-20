@@ -10,9 +10,10 @@ import java.util.concurrent.Executors;
 public class SocketServer {
   private boolean running = true;
   private ServerSocket serverSocket;
-  private ExecutorService executorService = Executors.newSingleThreadExecutor();
+  private ExecutorService executorService;
 
-  public void start(int port) throws IOException {
+  public void start(int port) throws Exception {
+    executorService = Executors.newSingleThreadExecutor();
     serverSocket = new ServerSocket(port);
 
     executorService.execute(() -> {
