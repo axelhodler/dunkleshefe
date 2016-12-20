@@ -22,7 +22,8 @@ public class SocketServer {
           Socket clientSocket = serverSocket.accept();
           PrintWriter out = new PrintWriter(clientSocket.getOutputStream());
         ) {
-          out.println("HTTP/1.1 200 OK\r\n");
+          out.println("HTTP/1.1 200 OK");
+          out.println("Content-Length: 45\r\n");
           out.println("<html><body><p>Hello World</p></body></html>");
         } catch (IOException e) {
         }
