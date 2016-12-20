@@ -1,5 +1,7 @@
 package co.hodler;
 
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.io.BufferedReader;
@@ -13,18 +15,22 @@ import static org.junit.Assert.assertThat;
 
 public class SocketServerShould {
 
+  private SocketServer socketServer;
+
+  @BeforeEach
+  void setUp() {
+    socketServer = new SocketServer();
+  }
+
   @Test
   void free_the_port_when_stopping() throws Exception {
-    SocketServer socketServer = new SocketServer();
     socketServer.start(4444);
     socketServer.stop();
     socketServer.start(4444);
-    socketServer.stop();
   }
 
   @Test
   void provides_response_body() throws Exception {
-    SocketServer socketServer = new SocketServer();
     socketServer.start(4444);
     URL localhost = new URL("http://localhost:4444/");
     URLConnection con = localhost.openConnection();
@@ -34,6 +40,10 @@ public class SocketServerShould {
     }
 
     assertThat(response, containsString("Hello World"));
+  }
+
+  @AfterEach
+  void cleanUp() throws Exception {
     socketServer.stop();
   }
 }
