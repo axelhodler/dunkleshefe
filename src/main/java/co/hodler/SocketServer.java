@@ -8,9 +8,14 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class SocketServer {
+  private String content;
   private boolean running = true;
   private ServerSocket serverSocket;
   private ExecutorService executorService;
+
+  public SocketServer(String content) {
+    this.content = content;
+  }
 
   public void start(int port) throws Exception {
     executorService = Executors.newSingleThreadExecutor();
@@ -24,7 +29,7 @@ public class SocketServer {
         ) {
           out.println("HTTP/1.1 200 OK");
           out.println("Content-Length: 45\r\n");
-          out.println("<html><body><p>Hello World</p></body></html>");
+          out.println(this.content);
         } catch (IOException e) {
         }
       }

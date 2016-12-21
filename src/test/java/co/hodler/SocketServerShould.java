@@ -19,7 +19,8 @@ public class SocketServerShould {
 
   @BeforeEach
   void setUp() {
-    socketServer = new SocketServer();
+    String content = "<html><body><p>Hello World</p></body></html>";
+    socketServer = new SocketServer(content);
   }
 
   @Test
