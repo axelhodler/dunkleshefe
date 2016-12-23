@@ -28,7 +28,7 @@ public class SocketServer {
           PrintWriter out = new PrintWriter(clientSocket.getOutputStream());
         ) {
           out.println("HTTP/1.1 200 OK");
-          out.println("Content-Length: " + this.content.length() + "\r\n");
+          out.println("Content-Length: " + this.content.length() + "\n");
           out.println(this.content);
         } catch (IOException e) {
         }
