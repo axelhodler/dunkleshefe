@@ -1,4 +1,4 @@
-package co.hodler.usescases;
+package co.hodler.usecases;
 
 import co.hodler.Controller;
 import co.hodler.View;
