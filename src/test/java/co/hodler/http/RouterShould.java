@@ -37,4 +37,12 @@ public class RouterShould {
 
     assertThat(r.route(pr), is(handledRequestResponse));
   }
+
+  @Test
+  void uses_not_found_if_route_not_present() {
+    ParsedRequest pr = new ParsedRequest(null);
+    pr.path = "/favicon.ico";
+
+    assertThat(r.route(pr), is("Not found"));
+  }
 }

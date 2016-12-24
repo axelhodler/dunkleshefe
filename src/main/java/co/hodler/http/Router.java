@@ -13,6 +13,9 @@ public class Router {
   }
 
   public String route(ParsedRequest pr) {
-    return registeredRoutes.get(pr.path).handle(pr);
+    if (registeredRoutes.containsKey(pr.path))
+      return registeredRoutes.get(pr.path).handle(pr);
+    else
+      return "Not found";
   }
 }
