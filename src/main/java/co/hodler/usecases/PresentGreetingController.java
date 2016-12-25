@@ -13,6 +13,6 @@ public class PresentGreetingController implements Controller {
 
   @Override
   public String handle(ParsedRequest pr) {
-    return view.toHTML();
+    return view.toHTML("Hello World");
   }
 }

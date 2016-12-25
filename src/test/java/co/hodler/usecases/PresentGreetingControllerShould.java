@@ -12,9 +12,9 @@ public class PresentGreetingControllerShould {
   @Test
   void prepare_view() {
     Controller viewContent = new PresentGreetingController(
-      new View("ViewContent"));
+      new View());
 
     assertThat(viewContent.handle(
-      new ParsedRequest(null)), containsString("ViewContent"));
+      new ParsedRequest(null)), containsString("Hello World"));
   }
 }

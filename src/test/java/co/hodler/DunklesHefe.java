@@ -20,7 +20,7 @@ public class DunklesHefe {
         PrintWriter out = new PrintWriter(clientSocket.getOutputStream());
       ) {
         Router r = new Router();
-        r.register("/", new PresentGreetingController(new View("Hello World")));
+        r.register("/", new PresentGreetingController(new View()));
         String response = r.route(new ParsedRequest(reader.readLine()));
         out.println("HTTP/1.1 200 OK");
         out.println("Content-Length: " + response.length() + "\n");
