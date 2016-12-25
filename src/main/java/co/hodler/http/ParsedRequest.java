@@ -1,7 +1,7 @@
 package co.hodler.http;
 
 public class ParsedRequest {
-  public String path = "";
+  private String path = "";
 
   public ParsedRequest(String request) {
     if (request != null) {
@@ -12,4 +12,7 @@ public class ParsedRequest {
     }
   }
 
+  public String getPath() {
+    return this.path;
+  }
 }

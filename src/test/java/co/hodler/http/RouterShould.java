@@ -20,8 +20,7 @@ public class RouterShould {
     r.register("/foo", (s) -> {
       return handledRequestResponse;
     });
-    ParsedRequest pr = new ParsedRequest(null);
-    pr.path = "/foo";
+    ParsedRequest pr = new ParsedRequest("IRRELEVANT /foo");
 
     assertThat(r.route(pr), is(handledRequestResponse));
   }
@@ -32,16 +31,14 @@ public class RouterShould {
     r.register("/bar", (s) -> {
       return handledRequestResponse;
     });
-    ParsedRequest pr = new ParsedRequest(null);
-    pr.path = "/bar";
+    ParsedRequest pr = new ParsedRequest("IRRELEVANT /bar");
 
     assertThat(r.route(pr), is(handledRequestResponse));
   }
 
   @Test
   void uses_not_found_if_route_not_present() {
-    ParsedRequest pr = new ParsedRequest(null);
-    pr.path = "/favicon.ico";
+    ParsedRequest pr = new ParsedRequest("IRRELEVANT /favicon.ico");
 
     assertThat(r.route(pr), is("Not found"));
   }
