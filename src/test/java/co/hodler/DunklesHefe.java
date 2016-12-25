@@ -1,5 +1,6 @@
 package co.hodler;
 
+import co.hodler.gateways.StubGreetingsGateway;
 import co.hodler.http.ParsedRequest;
 import co.hodler.http.Router;
 import co.hodler.usecases.PresentGreetingController;
@@ -20,7 +21,7 @@ public class DunklesHefe {
         PrintWriter out = new PrintWriter(clientSocket.getOutputStream());
       ) {
         Router r = new Router();
-        r.register("/", new PresentGreetingController(new View()));
+        r.register("/", new PresentGreetingController(new View(), new StubGreetingsGateway()));
         String response = r.route(new ParsedRequest(reader.readLine()));
         out.println("HTTP/1.1 200 OK");
         out.println("Content-Length: " + response.length() + "\n");
